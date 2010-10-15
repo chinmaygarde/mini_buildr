@@ -1,0 +1,19 @@
+!!! 5
+%html
+	%head
+		%title MiniBuild
+		%link{:rel=>'stylesheet', :media => "screen",:href=>'/projects/main.css', :type => "text/css"}
+		%script{:src=>'/projects/jquery.js', :type=>"text/javascript"}
+	%body
+		#top_bar
+			#top_bar_contents
+				#logo
+				#search_bar
+					%input{:type=>"text", :placeholder => "Search"}
+				#link_bar
+				#login_bar
+		#content
+			#left_content.section
+			#right_content.section
+			#main_content.section
+				= yield

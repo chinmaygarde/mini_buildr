@@ -1,0 +1,5 @@
+#projects
+	-@projects.each do |project|
+		.project
+			%h3= project.title
+			%a{:href => "#{project.url}"}= project.url

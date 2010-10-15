@@ -1,0 +1,11 @@
+*.db
+.DS_Store
+Thumbs.db
+Desktop.ini
+.bundle
+.gems
+.gems_old
+Gemfile.lock
+nbproject/*
+.idea/*
+tmp/*
