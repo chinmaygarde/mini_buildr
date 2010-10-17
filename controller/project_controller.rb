@@ -14,10 +14,15 @@ class ProjectController < Sinatra::Base
     haml :project_new
   end
   
+  get '/build/:id' do |identifier|
+    project = Project.get(identifier)
+    
+  end
+  
   post '/create_or_update' do
     project = Project.get(params[:id])
     if project.nil?
-      Project.create(
+      project = Project.create(
         :title => params[:title],
         :url => params[:url],
         :created_at => Time.now
@@ -27,6 +32,7 @@ class ProjectController < Sinatra::Base
       project.url = params[:url]
       project.save
     end
+    project.async_clone_repo
     redirect '/projects'
   end
   
