@@ -1,0 +1,13 @@
+%form{:method => "post", :action => "/projects/create_or_update"}
+	%fieldset
+		%ul
+			%li
+				%label{:for => "title"} Title: 
+				%input{:type => "text", :placeholder => "Project title...", :name => "title", :value => "#{@project.title}"}
+			%li
+				%label{:for => "url"} URL: 
+				%input{:type => "text", :placeholder => "Project url...", :name => "url", :value => "#{@project.url}"}
+			%li
+				%input{:type => "hidden", :value => "#{@project.id}", :name => "id"}
+			%li
+				%input{:type => "submit", :value => "Add Project"}

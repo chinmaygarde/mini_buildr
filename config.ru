@@ -12,6 +12,7 @@ DataMapper.setup(:default, "sqlite://#{File.expand_path(File.join(File.dirname(_
 
 Sinatra::Base.set(:public, File.join(File.dirname(__FILE__), "public"))
 Sinatra::Base.set(:views, File.join(File.dirname(__FILE__), "view"))
+use Rack::MethodOverride # _method goodness
 
 # Require all controllers
 Dir[File.dirname(__FILE__) + '/controller/*.rb'].each do |file| 
