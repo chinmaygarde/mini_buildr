@@ -1,8 +1,8 @@
 source :gemcutter
 
-gem "dm-core"
-gem "dm-migrations"
-gem "dm-sqlite-adapter"
+gem "mongo_mapper"
+gem "bson_ext"
+gem "i18n"
 gem "haml"
 gem "sass"
 gem "sinatra"

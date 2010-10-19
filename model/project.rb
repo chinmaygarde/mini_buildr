@@ -1,10 +1,10 @@
 class Project
-  include DataMapper::Resource
+  include MongoMapper::Document
   
-  property :id,         Serial
-  property :title,      String
-  property :url,        Text
-  property :created_at, DateTime
+  key :title,      String
+  key :url,        String
+  key :created_at, Time
+  
   def async_clone_repo
     Resque.enqueue(CloneRepo, id)
   end

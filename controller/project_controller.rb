@@ -10,17 +10,17 @@ class ProjectController < Sinatra::Base
   end
   
   get '/update/:id' do |identifier|
-    @project = Project.get(identifier)
+    @project = Project.find(identifier)
     haml :project_new
   end
   
   get '/build/:id' do |identifier|
-    project = Project.get(identifier)
+    project = Project.find(identifier)
     
   end
   
   post '/create_or_update' do
-    project = Project.get(params[:id])
+    project = Project.find(params[:id])
     if project.nil?
       project = Project.create(
         :title => params[:title],
@@ -37,7 +37,7 @@ class ProjectController < Sinatra::Base
   end
   
   delete '/delete/:id' do |identifier|
-    Project.find(identifier).first.destroy
+    Project.find(identifier).destroy
     redirect '/projects'
   end
 end

@@ -3,7 +3,7 @@ require 'fileutils'
 class CloneRepo
   @queue = :clone_repo
   def self.perform(repo_id, branch="master")
-    repo = Project.get(repo_id)
+    repo = Project.find(repo_id)
     if !File.exists?(File.join(Application::ROOT, "tmp"))
       Dir.mkdir("tmp")
     end
