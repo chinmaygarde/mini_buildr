@@ -1,0 +1,14 @@
+.project
+	%h3= @project.title
+	%p= @project.url
+	.links
+		%a{:href=>"/projects/update/#{@project.id}"} (Edit)
+#commits
+	%h3 Recent Commits
+	- @project.repo.commits('master', 25).each do |commit|
+		%h4= "#{commit.committer.name} (#{commit.committer.email})"
+		%p= commit.message
+		%p
+			%i= commit.date.to_s
+		%hr
+		

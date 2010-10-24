@@ -4,6 +4,11 @@ class ProjectController < Sinatra::Base
     haml :project_index
   end
   
+  get '/show/:id' do |identifier|
+    @project = Project.find(identifier)
+    haml :project_show
+  end
+  
   get '/new' do
     @project = Project.new
     haml :project_new

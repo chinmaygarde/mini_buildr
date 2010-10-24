@@ -12,7 +12,8 @@ class CloneRepo
     end
     Dir.mkdir("tmp/#{repo_id}")
     Dir.chdir(File.join(Application::ROOT, "tmp/#{repo_id}")) do
-      `git clone #{repo.url}`
+      `git clone #{repo.url} .`
     end
+    
   end
 end
