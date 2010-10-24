@@ -6,6 +6,7 @@
 #commits
 	%h3 Recent Commits
 	- @project.repo.commits('master', 25).each do |commit|
+		%img{:src => "#{gravatar(commit.committer.email)}"}
 		%h4= "#{commit.committer.name} (#{commit.committer.email})"
 		%p= commit.message
 		%p

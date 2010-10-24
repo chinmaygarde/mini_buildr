@@ -1,8 +1,9 @@
 #projects
 	-@projects.each do |project|
 		.project
-			%h3= project.title
+			%h3
+				%a{:href=>"/projects/show/#{project.id}"}= project.title
 			%p= project.url
 			.links
 				%a{:href=>"/projects/update/#{project.id}"} (Edit)
-				%a{:href=>"/projects/show/#{project.id}"} (Show)
+				

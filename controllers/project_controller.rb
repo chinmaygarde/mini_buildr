@@ -1,4 +1,6 @@
 class ProjectController < Sinatra::Base
+  helpers UserHelpers
+  
   get '/?' do
     @projects = Project.all
     haml :project_index

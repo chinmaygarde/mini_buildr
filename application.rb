@@ -13,6 +13,11 @@ require 'grit'
 module Application
   ROOT = File.dirname(__FILE__)
 
+  # Require all helpers
+  Dir[File.dirname(__FILE__) + '/helpers/*.rb'].each do |file| 
+    require File.join("helpers", File.basename(file, File.extname(file)))
+  end
+
   # Require all controllers
   Dir[File.dirname(__FILE__) + '/controllers/*.rb'].each do |file| 
     require File.join("controllers", File.basename(file, File.extname(file)))
@@ -26,11 +31,6 @@ module Application
   # Require all models
   Dir[File.dirname(__FILE__) + '/models/*.rb'].each do |file| 
     require File.join("models", File.basename(file, File.extname(file)))
-  end
-  
-  # Require all helpers
-  Dir[File.dirname(__FILE__) + '/helpers/*.rb'].each do |file| 
-    require File.join("helpers", File.basename(file, File.extname(file)))
   end
   
   MongoMapper.connection = Mongo::Connection.new('localhost')
