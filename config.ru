@@ -1,4 +1,6 @@
 require 'application'
+require 'sinatra'
+require 'sinatra/base'
 
 Sinatra::Base.set(:public, File.join(File.dirname(__FILE__), "public"))
 Sinatra::Base.set(:views, File.join(File.dirname(__FILE__), "view"))

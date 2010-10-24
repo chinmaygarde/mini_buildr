@@ -1,0 +1,2 @@
+echo Loading Mini Buildr Console
+irb -r application

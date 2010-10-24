@@ -3,8 +3,6 @@ require 'bundler'
 
 Bundler.setup
 
-require 'sinatra'
-require 'sinatra/base'
 require 'resque'
 require 'resque/server'
 require 'mongo_mapper'
