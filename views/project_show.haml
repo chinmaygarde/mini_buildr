@@ -4,12 +4,17 @@
 	.links
 		%a{:href=>"/projects/update/#{@project.id}"} (Edit)
 #commits
+	%h3= "About #{@project.title}"
+	#readme= @project.repo_readme
 	%h3 Recent Commits
-	- @project.repo.commits('master', 25).each do |commit|
-		%img{:src => "#{gravatar(commit.committer.email)}"}
-		%h4= "#{commit.committer.name} (#{commit.committer.email})"
-		%p= commit.message
-		%p
-			%i= commit.date.to_s
-		%hr
+	- if @project.repo == nil ||  @project.repo.commits.count == 0
+		.error Either this project has no commits or you have just added it and we are still in the process of fetching it.
+	- else
+		- @project.repo.commits('master', 25).each do |commit|
+			%img{:src => "#{gravatar(commit.committer.email)}"}
+			%h4= "#{commit.committer.name} (#{commit.committer.email})"
+			%p= commit.message
+			%p
+				%i= commit.date.to_s
+			%hr
 		

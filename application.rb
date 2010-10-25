@@ -24,7 +24,7 @@ module Application
   end
 
   # Require all jobs
-  Dir[File.dirname(__FILE__) + '/jobs/*.rb'].each do |file| 
+  Dir[File.dirname(__FILE__) + '/jobs/*.rb'].each do |file|
     require File.join("jobs", File.basename(file, File.extname(file)))
   end
 
