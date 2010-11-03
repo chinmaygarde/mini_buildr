@@ -10,3 +10,4 @@ nbproject/*
 .idea/*
 tmp/*
 *.rdb
+coverage
