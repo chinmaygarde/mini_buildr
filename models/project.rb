@@ -1,9 +1,11 @@
 class Project
-  include MongoMapper::Document
+  include Mongoid::Document
   
-  key :title,      String
-  key :url,        String
-  key :created_at, Time
+  field :title
+  field :url
+  field :created_at, :type => Date
+  
+  after_save :async_clone_repo
   
   def repo_file_path
     @repo_path ||= File.expand_path(File.join(Application::ROOT, "tmp", id.to_s))

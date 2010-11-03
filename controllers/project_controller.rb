@@ -7,7 +7,7 @@ class ProjectController < Sinatra::Base
   end
   
   get '/show/:id' do |identifier|
-    @project = Project.find(identifier)
+    @project = Project.find(:conditions => {:id => identifier}).first
     haml :project_show
   end
   
@@ -17,34 +17,27 @@ class ProjectController < Sinatra::Base
   end
   
   get '/update/:id' do |identifier|
-    @project = Project.find(identifier)
+    @project = Project.find(:conditions => {:id => identifier}).first
     haml :project_new
   end
   
-  get '/build/:id' do |identifier|
-    project = Project.find(identifier)
-    
-  end
-  
   post '/create_or_update' do
-    project = Project.find(params[:id])
+    project = Project.find(:conditions => {:id => params[:id]}).first
     if project.nil?
-      project = Project.create(
-        :title => params[:title],
-        :url => params[:url],
-        :created_at => Time.now
-      )
+      project = Project.new
+      project.title = params[:title]
+      project.url = params[:url]
+      project.created_at = Time.now
     else
       project.title = params[:title]
       project.url = params[:url]
-      project.save
     end
-    project.async_clone_repo
+    project.save
     redirect '/projects'
   end
   
   delete '/delete/:id' do |identifier|
-    Project.find(identifier).destroy
+    Project.find(:conditions => {:id => identifier}).first.destroy
     redirect '/projects'
   end
 end

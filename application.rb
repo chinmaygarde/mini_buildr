@@ -5,7 +5,7 @@ Bundler.setup
 
 require 'resque'
 require 'resque/server'
-require 'mongo_mapper'
+require 'mongoid'
 require 'i18n'
 require 'haml'
 require 'grit'
@@ -33,6 +33,9 @@ module Application
     require File.join("models", File.basename(file, File.extname(file)))
   end
   
-  MongoMapper.connection = Mongo::Connection.new('localhost')
-  MongoMapper.database = 'mini_buildr'
+  Mongoid.configure do |config|
+    name = "mini_buildr"
+    host = "localhost"
+    config.master = Mongo::Connection.new.db(name)
+  end
 end

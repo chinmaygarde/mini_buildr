@@ -1,5 +1,5 @@
-MiniBuildr (non functional for now)
+MiniBuildr
 ----------
 Really simple ruby build server.
 
-Powered by Sinatra, MongoMapper, Haml, Sass, Redis and Resque
+Powered by Sinatra, Mongoid, Haml, Sass, Redis and Resque

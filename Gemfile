@@ -1,6 +1,6 @@
 source :gemcutter
 
-gem "mongo_mapper"
+gem "mongoid"
 gem "bson_ext"
 gem "i18n"
 gem "haml"
