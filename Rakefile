@@ -13,5 +13,5 @@ desc "Run all specs with rcov"
 Spec::Rake::SpecTask.new('spec:rcov') do |t|
   t.spec_files = FileList['spec/**/*.rb']
   t.rcov = true
-  t.rcov_opts = ['--exclude', 'spec']
+  t.rcov_opts = ['--exclude', 'gems']
 end
