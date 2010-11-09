@@ -15,13 +15,13 @@
 		%input{:type => "submit", :value => "Delete Project"}
 .project
 	%h3= @project.title
-	%p= @project.url
 	.links
 		%a{:href=>"/projects/update/#{@project.id}"} (Edit)
 		%a{:href=>"/projects"} (Back)
-#commits
+#readme.profile
 	%h3= "About #{@project.title}"
 	#readme= @project.repo_readme
+#commits
 	%h3 Recent Commits
 	- if @project.repo == nil ||  @project.repo.commits.count == 0
 		.error Either this project has no commits or you have just added it and we are still in the process of fetching it.
