@@ -128,3 +128,20 @@ h1 {
 	padding: 15px;
 	border-radius: 8px;
 }
+.profile {
+	background-color: #FFF;
+	margin: 12px;
+	padding: 12px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-style: solid;
+	border-color: rgba(255, 233, 195, 0.898438);	
+}
+.left img {
+	float: left;
+	padding-right: 10px;
+}
+.right img {
+	float: right;
+	padding-left: 10px;
+}

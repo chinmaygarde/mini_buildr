@@ -1,8 +1,9 @@
 #projects
 	%h3 All Projects
-	-@projects.each do |project|
+	-@projects.each_with_index do |project, index|
 		.project
-			%h3
+		%div{:id => "project_#{index + 1}", :class => "profile #{(index % 2 == 1) ? 'left' : 'right'}"}
+			%h2
 				%a{:href=>"/projects/show/#{project.id}"}= project.title
 			%p= project.url
 			.links
