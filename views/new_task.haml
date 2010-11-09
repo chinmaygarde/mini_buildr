@@ -1,0 +1,13 @@
+%h3= "Create a new build task for '#{@project.title}'"
+%form{:action => "/projects/#{@project.id}/tasks/create", :method => :post}
+	%p
+		%b Task Type
+		%input{:type => "text", :name => "task_name"}
+	%p Select Test Directory
+	%p
+		- @project.top_level_directories.each do |dir|
+			%input{:type => "checkbox", :name => "dirs", :value => "#{dir}"}
+			%b= dir
+			%br
+	%input{:type => "submit", :value => "Create New Task"}
+%a{:href=>"/projects/show/#{@project.id}"} Back

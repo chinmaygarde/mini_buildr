@@ -18,7 +18,7 @@ class Project
   end
   
   def repo
-    Grit::Repo.new(repo_file_path) if File.exists?(repo_file_path)
+    Grit::Repo.new(repo_file_path) if File.exists?(repo_file_path) && Dir.new(repo_file_path).count > 2
   end
   
   def repo_readme
@@ -26,10 +26,22 @@ class Project
     if File.exists?(repo_file_path)
       Dir.new(repo_file_path).entries.each do |file|
         if File.ftype(File.join(repo_file_path, file)) != "directory" && File.basename(File.join(repo_file_path, file)).match(/readme/i).to_s.downcase == "readme"
-          contents << File.read(File.basename(file)).to_s.gsub(/\n/, "<br />")
+          contents << File.read(File.expand_path(File.join(repo_file_path, file))).to_s.gsub(/\n/, "<br />")
         end
       end
     end
     contents
+  end
+  
+  def top_level_directories
+    dirs = []
+    if File.exists?(repo_file_path)
+      Dir.new(repo_file_path).entries.each do |file|
+        if File.ftype(File.join(repo_file_path, file)) == "directory" && File.basename(file).match(/[a-zA-Z]+/).to_s != "" && file.to_s != ".git"
+          dirs << File.basename(file)
+        end
+      end
+    end
+    dirs
   end
 end

@@ -9,6 +9,7 @@ require 'mongoid'
 require 'i18n'
 require 'haml'
 require 'grit'
+require 'sinatra/content_for'
 
 module Application
   ROOT = File.dirname(__FILE__)

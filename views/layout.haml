@@ -21,6 +21,8 @@
 				#login_bar
 		#content
 			#left_content.section
+				= yield_content :left
 			#right_content.section
+				= yield_content :right
 			#main_content.section
 				= yield

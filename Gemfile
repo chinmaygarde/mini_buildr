@@ -10,6 +10,7 @@ gem "i18n",     "0.4.1"
 # Views
 gem "haml",     "3.0.21"
 gem "sass",     "3.1.0.alpha.18"
+gem "sinatra-content-for",  "0.2"
 
 # Delayed and Background Jobs
 gem "resque",   "1.10.0"

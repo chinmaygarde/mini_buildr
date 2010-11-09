@@ -1,5 +1,6 @@
 class ProjectController < Sinatra::Base
   helpers UserHelpers
+  helpers Sinatra::ContentFor
   
   get '/?' do
     @projects = Project.all
@@ -40,4 +41,10 @@ class ProjectController < Sinatra::Base
     Project.find(:conditions => {:id => identifier}).first.destroy
     redirect '/projects'
   end
+  
+  get '/:id/tasks/new' do |identifier|
+    @project = Project.find(:conditions => {:id => identifier}).first
+    haml :new_task
+  end
+  
 end
