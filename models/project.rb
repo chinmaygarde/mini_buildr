@@ -4,7 +4,7 @@ class Project
   field :title
   field :url
   field :created_at, :type => Date
-
+  
   embeds_many :tasks
   
   after_save :async_clone_repo
@@ -44,4 +44,5 @@ class Project
     end
     dirs
   end
+  
 end

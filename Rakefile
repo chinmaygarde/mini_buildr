@@ -15,3 +15,21 @@ Spec::Rake::SpecTask.new('spec:rcov') do |t|
   t.rcov = true
   t.rcov_opts = ['--exclude', 'gems']
 end
+
+namespace :db do
+  desc "Setup database"
+  task :setup => [:reset, :seed]
+  
+  desc "Add seed values to the database"
+  task :seed do
+    puts "Adding seed values"
+    eval(File.read(File.join(Application::ROOT, "db", "seed.rb")))
+  end
+  
+  desc "Clear all database values"
+  task :reset do
+    puts "Clearing All Data"
+    Project.delete_all
+    TaskType.delete_all
+  end
+end

@@ -7,7 +7,7 @@
 		- else
 			%ul
 				- @project.tasks.each do |task|
-					%li= task.title
+					%li= task.task_type.title if !task.task_type.nil?
 - content_for :right do
 	%h3 Delete Project
 	%form{:action => "/projects/delete/#{@project.id}", :method => "post"}
