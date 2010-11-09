@@ -5,7 +5,7 @@ class Project
   field :url
   field :created_at, :type => Date
 
-  embeds_many :tasks, :inverse_of => :project
+  embeds_many :tasks
   
   after_save :async_clone_repo
   

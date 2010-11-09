@@ -3,6 +3,7 @@ require 'bundler'
 
 Bundler.setup
 Bundler.require
+require 'resque/server'
 
 module Application
   ROOT = File.dirname(__FILE__)
