@@ -3,8 +3,8 @@ source :gemcutter
 gem "sinatra",  "1.0"
 
 # Database
-gem "mongoid",  "1.9.2"
-gem "bson_ext", "1.1.1"
+gem "mongoid",  "2.0.0.beta.20"
+gem "bson_ext", "1.1.2"
 gem "i18n",     "0.4.1"
 
 # Views
