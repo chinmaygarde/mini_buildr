@@ -5,9 +5,9 @@
 		- if @project.tasks.count == 0
 			%h4 No tasks have been specified
 		- else
-			%ul
-				- @project.tasks.each do |task|
-					%li= task.task_type.title if !task.task_type.nil?
+			- @project.tasks.each_with_index do |task, index|
+				%div{:class => "task", :id => "task_#{index+1}"}
+					%a{:href => "/projects/#{@project.id}/tasks/#{task.id}/show"}= task.task_type.title if !task.task_type.nil?
 - content_for :right do
 	%h3 Delete Project
 	%form{:action => "/projects/delete/#{@project.id}", :method => "post"}

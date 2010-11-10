@@ -1,0 +1,8 @@
+#task
+	%h3= "#{@task.task_type.title} for #{@project.title}"
+	- if @task.directories.count != 0
+	#directories
+	%h3 Directories
+	%ul
+		- @task.directories.each do |directory|
+			%li= directory

@@ -43,7 +43,43 @@ class ProjectController < Sinatra::Base
   get '/:id/tasks/new' do |identifier|
     @project = Project.find(identifier)
     @task_types = TaskType.all
-    haml :new_task
+    haml :new_task_select
   end
   
+  post '/:id/tasks/options' do |project_id|
+    @project = Project.find(project_id)
+    @task_type = TaskType.find(params[:task_type_id])
+    haml :new_task_options
+  end
+  
+  post '/:id/tasks/create' do |project_id|
+    project = Project.find(project_id)
+    task_type = TaskType.find(params[:task_type_id])
+    task = project.tasks.build
+    task.task_type_id = task_type.id.to_s
+    task.directories = get_directories(params, task_type)
+    task.save
+    redirect "/projects/show/#{project.id}"
+  end
+  
+  get '/:project_id/tasks/:task_id/show' do |project_id, task_id|
+    @project = Project.find(project_id)
+    @task = @project.tasks.find(task_id)
+    haml :task_show
+  end
+  
+  private
+  def get_directories(params, task_type)
+    dirs = []
+    if task_type.directory_required?
+      if task_type.directory_multiple?
+        params[:directory].each_value do |value|
+          dirs << value
+        end
+      else
+        dirs << params[:directory]
+      end
+    end
+    dirs
+  end
 end
