@@ -3,7 +3,7 @@ body {
 	margin: 0px;
 	padding: 0px;
 	color: #111;
-	background-image: url('/projects/bg.jpg');
+	background-image: url('/bg.jpg');
 	background-attachment: fixed;
 }
 h1 {

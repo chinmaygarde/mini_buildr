@@ -1,7 +1,4 @@
-class ProjectController < Sinatra::Base
-  helpers UserHelpers
-  helpers Sinatra::ContentFor
-  
+class ProjectController < ApplicationController
   get '/?' do
     @projects = Project.all
     haml :project_index
