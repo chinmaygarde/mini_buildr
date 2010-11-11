@@ -6,8 +6,18 @@
 			%h4 No tasks have been specified
 		- else
 			- @project.tasks.each_with_index do |task, index|
-				%div{:class => "task", :id => "task_#{index+1}"}
+				%div{:class => "task profile", :id => "task_#{index+1}"}
 					%a{:href => "/projects/#{@project.id}/tasks/#{task.id}/show"}= task.task_type.title if !task.task_type.nil?
+					%p
+						%form{:id => "delete_task_form_#{task.id}", :action => "/projects/#{@project.id}/tasks/#{task.id}/delete", :method => :post}
+							%input{:type => "hidden", :name => "_method", :value => "delete"}
+						%a{:href => "/projects/#{@project.id}/tasks/#{task.id}/build"} Build | 
+						%a{:id => "delete_task_submit_#{task.id}", :href => "#"} Delete
+						:javascript
+							$("#delete_task_submit_#{task.id}").click(function(){
+								$("#delete_task_form_#{task.id}").submit();
+							});
+						
 - content_for :right do
 	%h3 Delete Project
 	%form{:action => "/projects/delete/#{@project.id}", :method => "post"}

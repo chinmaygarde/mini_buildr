@@ -65,6 +65,13 @@ class ProjectController < ApplicationController
     haml :task_show
   end
   
+  delete '/:project_id/tasks/:task_id/delete' do |project_id, task_id|
+    project = Project.find(project_id)
+    task = project.tasks.find(task_id)
+    task.delete
+    redirect("/projects/show/#{project.id}")
+  end
+  
   private
   def get_directories(params, task_type)
     dirs = []
