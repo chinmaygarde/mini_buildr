@@ -1,17 +1,18 @@
 require 'rubygems'
 require 'fileutils'
-require 'bundler'
 
+require 'bundler'
 Bundler.setup
 Bundler.require
+
 require 'resque/server'
 
 module Application
   ROOT = File.dirname(__FILE__)
 
   %w[helpers controllers jobs models].each do |dir|
-    Dir[File.dirname(__FILE__) + "/#{dir}/*.rb"].each do |file| 
-      require File.join(dir, File.basename(file, File.extname(file)))
+    Dir[File.join(File.dirname(__FILE__), "app", dir, "**/*.rb")].each do |file|
+      require File.expand_path(file)
     end    
   end
   

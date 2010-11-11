@@ -1,7 +1,7 @@
 require 'application'
 
 Sinatra::Base.set(:public, File.join(File.dirname(__FILE__), "public"))
-Sinatra::Base.set(:views, File.join(File.dirname(__FILE__), "views"))
+Sinatra::Base.set(:views, File.join(File.dirname(__FILE__), "app", "views"))
 use Rack::MethodOverride
 
 #Setup paths
@@ -16,3 +16,5 @@ end
 map "/queues" do
   run Resque::Server.new
 end
+
+puts "Server Started..."
