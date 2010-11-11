@@ -6,14 +6,13 @@
 		- if @task_type.directory_multiple?
 			%p
 				- @project.top_level_directories.each_with_index do |dir, index|
-					%input{:type => "checkbox", :name => "directory[#{index}]", :value => "#{dir}"}
+					%input{:type => "checkbox", :name => "directory[#{index}]", :value => "#{dir}", :style => "width:25px"}
 					%b= dir
 					%br
-				
 		- else
 			%p
 				- @project.top_level_directories.each do |dir|
-					%input{:type => "radio", :name => "directory", :value => "#{dir}"}
+					%input{:type => "radio", :name => "directory", :value => "#{dir}", :style => "width:25px"}
 					%b= dir
 					%br
 	%input{:type => "submit", :value => "Create Task"}
