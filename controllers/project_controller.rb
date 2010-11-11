@@ -79,7 +79,10 @@ class ProjectController < ApplicationController
   end
   
   get '/:project_id/tasks/:task_id/build' do |project_id, task_id|
-    "TODO"
+    project = Project.find(project_id)
+    task = project.tasks.find(task_id)
+    Resque.enqueue(RcovReportGenerate, project.id.to_s, task.id.to_s)
+    redirect("/projects/show/#{project.id}")
   end
   
   private

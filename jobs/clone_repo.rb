@@ -1,5 +1,3 @@
-require 'fileutils'
-
 class CloneRepo
   @queue = :clone_repo
   def self.perform(repo_id, branch="master")

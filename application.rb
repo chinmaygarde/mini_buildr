@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'fileutils'
 require 'bundler'
 
 Bundler.setup
