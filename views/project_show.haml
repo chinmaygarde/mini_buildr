@@ -23,6 +23,8 @@
 	%form{:action => "/projects/delete/#{@project.id}", :method => "post"}
 		%input{:type => "hidden", :name => "_method", :value => "delete"}
 		%input{:type => "submit", :value => "Delete Project"}
+	%form{:action => "/projects/touch/#{@project.id}", :method => "post"}
+		%input{:type => "submit", :value => "Check for Updates"}		
 .project
 	%h3= @project.title
 	.links

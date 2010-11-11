@@ -32,6 +32,12 @@ class ProjectController < ApplicationController
     redirect '/projects'
   end
   
+  post '/touch/:project_id' do |project_id|
+    project = Project.find(project_id)
+    project.save
+    redirect "/projects/show/#{project.id}"
+  end
+  
   delete '/delete/:id' do |identifier|
     Project.find(identifier).destroy
     redirect '/projects'
@@ -70,6 +76,10 @@ class ProjectController < ApplicationController
     task = project.tasks.find(task_id)
     task.delete
     redirect("/projects/show/#{project.id}")
+  end
+  
+  get '/:project_id/tasks/:task_id/build' do |project_id, task_id|
+    "TODO"
   end
   
   private
