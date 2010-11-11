@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'fileutils'
+require 'yaml'
 
 require 'bundler'
 Bundler.setup
@@ -8,17 +9,22 @@ Bundler.require
 require 'resque/server'
 
 module Application
+  # Globals
   ROOT = File.dirname(__FILE__)
+  ENVIRONMENT = ENV['environment'] || 'development'
 
+  # Requires
   %w[helpers controllers jobs models].each do |dir|
     Dir[File.join(File.dirname(__FILE__), "app", dir, "**/*.rb")].each do |file|
       require File.expand_path(file)
-    end    
+    end
   end
   
+  # Database
+  db = YAML.load_file("db/database.yml")[Application::ENVIRONMENT]
   Mongoid.configure do |config|
-    name = "mini_buildr"
-    host = "localhost"
+    name = db["database"]
+    host = db["host"]
     config.master = Mongo::Connection.new.db(name)
   end
 end

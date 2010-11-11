@@ -1,0 +1,9 @@
+development:
+    database: mini_buildr
+    host: localhost
+test:
+    database: mini_buildr_test
+    host: localhost
+production:
+    database: mini_buildr_prod
+    host: localhost
