@@ -34,4 +34,7 @@ group :test do
 	
 	# Test Coverage Reporting
 	gem "rcov",				"0.9.9"
+	
+	# Metrics
+	gem "metric_fu",  "2.0.0"
 end
