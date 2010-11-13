@@ -13,6 +13,7 @@ h1 {
 	margin-bottom: 10px;
 	font-size: 18px;
 }
+
 #content input, textarea {
 	width: 95%;
 	font-size:20px;
@@ -94,8 +95,6 @@ h1 {
 	color: #FFF;
 }
 
-
-
 #content {
 	background: rgba(255, 233, 195, 0.898438);	
 	max-width: 1040px;
@@ -130,6 +129,19 @@ h1 {
 	padding: 15px;
 	border-radius: 8px;
 }
+.login_provider  {
+	height: 50px;
+}
+#content .login_provider a {
+	font-size: 25px;
+}
+#content .login_provider img {
+	float: left;
+	padding-right: 12px;
+	height:	50px;
+	width:	50px;
+}
+
 .profile {
 	background-color: #FFF;
 	margin: 12px;

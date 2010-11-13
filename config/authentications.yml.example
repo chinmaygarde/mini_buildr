@@ -1,6 +1,13 @@
+# http://dev.twitter.com/apps
 twitter:
     consumer_key: <key>
     consumer_secret: <secret>
+
 facebook:
     app_id: <id>
     app_secret: <secret>
+
+# https://github.com/account/applications/
+github:
+    client_id: <client_id>
+    secret: <secret>

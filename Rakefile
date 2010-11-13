@@ -32,6 +32,9 @@ namespace :db do
     puts "Clearing All Data"
     Project.delete_all
     TaskType.delete_all
+    Task.delete_all
+    User.delete_all
+    Authentication.delete_all
   end
 end
 

@@ -4,7 +4,7 @@ Sinatra::Base.set(:environment, Application::ENVIRONMENT.to_sym)
 Sinatra::Base.set(:public, File.join(File.dirname(__FILE__), "public"))
 Sinatra::Base.set(:views, File.join(File.dirname(__FILE__), "app", "views"))
 
-use Rack::MethodOverride
+Sinatra::Base.use Rack::MethodOverride
 
 #Setup paths
 map "/" do

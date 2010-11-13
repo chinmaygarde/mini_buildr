@@ -20,8 +20,14 @@
 							%a{:href=>"/queues"} Job Queues
 				#login_bar
 					%ul
-						%li
-							%a{:href=>"/login"} Login
+						- if signed_in?
+							%li
+								%a{:href => "#"}= "Signed in as #{current_user.handle}"
+							%li
+								%a{:href => "/logout"} Sign Out
+						- else
+							%li
+								%a{:href => "/login"} Sign In
 		#content
 			#left_content.section
 				= yield_content :left
