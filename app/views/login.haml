@@ -1,0 +1,41 @@
+%h3 Login Using
+.profile#login
+	%img{:src => "/auth/twitter_64.png"}
+	%a{:href=>"/auth/twitter", :style => "font-size:30px"} Twitter
+.profile#login
+	%img{:src => "/auth/facebook_64.png"}
+	%a{:href=>"/auth/facebook", :style => "font-size:30px"} Facebook
+.profile#login
+	%img{:src => "/auth/github_64.png"}
+	%a{:href=>"/auth/github", :style => "font-size:30px"} GitHub
+.profile#login
+	%img{:src => "/auth/google_64.png"}
+	%a{:href=>"/auth/google", :style => "font-size:30px"} Google
+.profile#login
+	%img{:src => "/auth/linkedin_64.png"}
+	%a{:href=>"/auth/linkedin", :style => "font-size:30px"} LinkedIn
+
+- content_for :left do
+	.profile#login
+		%img{:src => "/auth/aol_64.png"}
+		%a{:href=>"/auth/aol", :style => "font-size:30px"} AOL
+	.profile#login
+		%img{:src => "/auth/myspace_64.png"}
+		%a{:href=>"/auth/myspace", :style => "font-size:30px"} MySpace
+	.profile#login
+		%img{:src => "/auth/openid_64.png"}
+		%a{:href=>"/auth/openid", :style => "font-size:30px"} OpenID
+	.profile#login
+		%img{:src => "/auth/presently_64.png"}
+		%a{:href=>"/auth/presently", :style => "font-size:30px"} Presently
+	
+- content_for :right do
+	.profile#login
+		%img{:src => "/auth/basecamp_64.png"}
+		%a{:href=>"/auth/basecamp", :style => "font-size:30px"} Basecamp
+	.profile#login
+		%img{:src => "/auth/campfire_64.png"}
+		%a{:href=>"/auth/campfire", :style => "font-size:30px"} Campfire
+	.profile#login
+		%img{:src => "/auth/Yahoo_64.png"}
+		%a{:href=>"/auth/yahoo", :style => "font-size:30px"} Yahoo

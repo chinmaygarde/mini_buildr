@@ -11,6 +11,7 @@ require 'resque/server'
 module Application
   ROOT = File.dirname(__FILE__)
   ENVIRONMENT = ENV['environment'] || 'development'
+  AUTH_TOKENS = YAML.load_file("config/authentications.yml")
 end
 
 # Requires

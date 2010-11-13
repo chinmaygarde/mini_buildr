@@ -1,0 +1,6 @@
+twitter:
+    consumer_key: <key>
+    consumer_secret: <secret>
+facebook:
+    app_id: <id>
+    app_secret: <secret>

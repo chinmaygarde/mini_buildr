@@ -22,6 +22,9 @@ gem "grit",     "2.3.0"
 gem "system_timer",   "1.0"
 gem "rake",     "0.8.7"
 
+# Authorization
+gem "omniauth"
+
 group :test do
 	# RSpec
 	gem "rspec",			"1.3.0"
