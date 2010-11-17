@@ -1,0 +1,16 @@
+%form{:action => "/users/#{@user.id}/update", :method => "post"}
+	%p
+		%label Handle
+		%br
+		%input{:type => "text", :name => "handle", :placeholder => "handle", :value => "#{@user.handle}"}
+	%p
+		%label Email
+		%br
+		%input{:type => "text", :name => "email", :placeholder => "email", :value => "#{@user.email}"}
+	%p
+		%input{:type => "submit", :value => "Update Profile"}
+%h4 Edit your avatar at Gravatar
+%hr
+%h3 Authentication methods in use
+- @user.authentications.each do |auth|
+	.auth.profile= auth.provider

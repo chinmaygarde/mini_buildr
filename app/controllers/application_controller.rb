@@ -46,10 +46,6 @@ class ApplicationController < Sinatra::Base
     redirect '/projects'
   end
   
-  get '/panic' do
-    current_user.inspect
-  end
-  
   protected
   
   def current_user

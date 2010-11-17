@@ -5,6 +5,10 @@ map "/" do
   run HomeController.new
 end
 
+map "/users" do
+  run UserController.new
+end
+
 map "/projects" do
   run ProjectController.new
 end
