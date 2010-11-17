@@ -1,2 +1,15 @@
-echo Loading Mini Buildr Console
-irb -r application
+#!/usr/bin/env ruby
+require 'irb'
+require 'irb/completion'
+
+def	reload!
+	puts "Loading environment..."
+	load File.expand_path(File.join(File.dirname(File.dirname(__FILE__)), "application.rb"))
+	puts "Done"
+end
+
+puts "Starting MiniBuildR Console"
+reload!
+
+IRB.start
+
