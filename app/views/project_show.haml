@@ -17,7 +17,7 @@
 							$("#delete_task_submit_#{task.id}").click(function(){
 								$("#delete_task_form_#{task.id}").submit();
 							});
-						
+
 - content_for :right do
 	%h3 Delete Project
 	%form{:action => "/projects/delete/#{@project.id}", :method => "post"}

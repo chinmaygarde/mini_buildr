@@ -1,43 +1,22 @@
 - content_for :left do
 	%h3 Login using ...
-	.profile.login_provider
-		%img{:src => "/auth/aol_64.png"}
-		%a{:href=>"/auth/aol"} AOL
-	.profile.login_provider
-		%img{:src => "/auth/myspace_64.png"}
-		%a{:href=>"/auth/myspace"} MySpace
-	.profile.login_provider
-		%img{:src => "/auth/openid_64.png"}
-		%a{:href=>"/auth/openid"} OpenID
-	.profile.login_provider
-		%img{:src => "/auth/presently_64.png"}
-		%a{:href=>"/auth/presently"} Presently
+	- %w(aol myspace openid presently).each do |provider|
+		.profile.login_provider
+			%a{:href=>"/auth/#{provider}"}
+				%img{:src => "/auth/#{provider}_64.png"}
+				%span= provider
 
 %h3 or ...
-.profile.login_provider
-	%img{:src => "/auth/twitter_64.png"}
-	%a{:href=>"/auth/twitter"} Twitter
-.profile.login_provider
-	%img{:src => "/auth/facebook_64.png"}
-	%a{:href=>"/auth/facebook"} Facebook
-.profile.login_provider
-	%img{:src => "/auth/github_64.png"}
-	%a{:href=>"/auth/github"} GitHub
-.profile.login_provider
-	%img{:src => "/auth/linkedin_64.png"}
-	%a{:href=>"/auth/linkedin"} LinkedIn
-	
+- %w(twitter facebook github linkedin).each do |provider|
+	.profile.login_provider
+		%a{:href=>"/auth/#{provider}"}
+			%img{:src => "/auth/#{provider}_64.png"}
+			%span= provider
+
 - content_for :right do
 	%h3 or ...
-	.profile.login_provider
-		%img{:src => "/auth/basecamp_64.png"}
-		%a{:href=>"/auth/basecamp"} Basecamp
-	.profile.login_provider
-		%img{:src => "/auth/campfire_64.png"}
-		%a{:href=>"/auth/campfire"} Campfire
-	.profile.login_provider
-		%img{:src => "/auth/yahoo_64.png"}
-		%a{:href=>"/auth/yahoo"} Yahoo
-	.profile.login_provider
-		%img{:src => "/auth/google_64.png"}
-		%a{:href=>"/auth/google"} Google
+	- %w(basecamp campfire yahoo google).each do |provider|
+		.profile.login_provider
+			%a{:href=>"/auth/#{provider}"}
+				%img{:src => "/auth/#{provider}_64.png"}
+				%span= provider

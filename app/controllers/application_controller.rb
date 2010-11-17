@@ -2,6 +2,11 @@ class ApplicationController < Sinatra::Base
   helpers UserHelpers
   helpers Sinatra::ContentFor
   
+  set(:environment, Application::ENVIRONMENT.to_sym)
+  set(:public, File.join(Application::ROOT, "public"))
+  set(:views, File.join(Application::ROOT, "app", "views"))
+  use Rack::MethodOverride
+
   enable :sessions
   
   use OmniAuth::Builder do
@@ -17,41 +22,53 @@ class ApplicationController < Sinatra::Base
   get '/auth/:name/callback' do
     auth = request.env['omniauth.auth']
 
-    auth_record = Authentication.find(:first, :conditions => { :provider => auth['provider'], :uid => auth['uid'] })
+    auth_record = Authentication.find(:conditions => { :provider => auth['provider'], :uid => auth['uid'] }).first
     if !auth_record.nil?
       # Existing User
-      current_user = auth_record.user
+      login_user(auth_record.user)
     else
       # New User
       auth_record = Authentication.create!(:provider => auth['provider'], :uid => auth['uid'])
-      handle = auth['user_info']['name'] || auth['user_info']['nickname'] || auth['user_info']['email'] || 'J Doe'      
-      auth_record.user = User.create!(:handle => handle)
-      current_user = auth_record.user
+
+      user = User.new
+      user.authentications << auth_record
+      user.handle = auth['user_info']['nickname'] if !auth['user_info']['nickname'].nil?
+      user.email = auth['user_info']['email'] if !auth['user_info']['email'].nil?
+      user.save!
+      
+      login_user(user)
     end
     redirect '/projects'
   end
   
   get '/logout' do
-    session[:user_id] = nil
+    logout_user
     redirect '/projects'
+  end
+  
+  get '/panic' do
+    current_user.inspect
   end
   
   protected
   
   def current_user
     begin
-      user = User.find(:conditions => session[:user_id])      
+      User.find(session[:user_id])
     rescue
     end
-    @current_user ||= user
   end
 
   def signed_in?
     !!current_user
   end
   
-  def current_user=(user)
-    @current_user = user
+  def login_user(user)
     session[:user_id] = user.id.to_s
   end
+  
+  def logout_user
+    session[:user_id] = nil
+  end
+  
 end

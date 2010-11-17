@@ -9,8 +9,8 @@ gem "i18n",     "0.4.1"
 
 # Views
 gem "haml",     "3.0.21"
-# gem "sass",     "3.1.0.alpha.18"
 gem "sinatra-content-for",  "0.2", :require => "sinatra/content_for"
+# gem "sass",     "3.1.0.alpha.18"
 
 # Delayed and Background Jobs
 gem "resque",   "1.10.0"
@@ -23,7 +23,7 @@ gem "system_timer",   "1.0"
 gem "rake",     "0.8.7"
 
 # Authorization
-gem "omniauth"
+gem "omniauth", "0.1.6"
 
 group :test do
 	# RSpec

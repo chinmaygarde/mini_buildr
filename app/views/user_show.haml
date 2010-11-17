@@ -1,0 +1,5 @@
+#user_profile
+	%p= "Handle: #{@user.handle}"
+	%p= "Email: #{@user.email}"
+	%p
+		%a{:href=>"/users/#{@user.id}/edit"} Edit Profile

@@ -1,12 +1,6 @@
 require 'application'
 
-Sinatra::Base.set(:environment, Application::ENVIRONMENT.to_sym)
-Sinatra::Base.set(:public, File.join(File.dirname(__FILE__), "public"))
-Sinatra::Base.set(:views, File.join(File.dirname(__FILE__), "app", "views"))
-
-Sinatra::Base.use Rack::MethodOverride
-
-#Setup paths
+# Setup paths
 map "/" do
   run HomeController.new
 end

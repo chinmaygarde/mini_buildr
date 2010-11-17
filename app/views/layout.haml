@@ -18,11 +18,13 @@
 							%a{:href=>"/projects/new"} New Project
 						%li
 							%a{:href=>"/queues"} Job Queues
+						%li
+							%a{:href=>"/panic"} Panic
 				#login_bar
 					%ul
 						- if signed_in?
 							%li
-								%a{:href => "#"}= "Signed in as #{current_user.handle}"
+								%a{:href => "#"}= "Signed in as #{(!current_user.handle.nil?) ? current_user.handle : 'J Doe'}"
 							%li
 								%a{:href => "/logout"} Sign Out
 						- else
