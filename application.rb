@@ -1,12 +1,4 @@
-require 'rubygems'
-require 'fileutils'
 require 'yaml'
-
-require 'bundler'
-Bundler.setup
-Bundler.require
-
-require 'resque/server'
 
 module Application
   ROOT = File.dirname(__FILE__)
@@ -15,6 +7,17 @@ module Application
 end
 
 # Requires
+require 'rubygems'
+require 'fileutils'
+require 'bundler'
+
+Bundler.setup
+Bundler.require
+Bundler.require(:development) if Application::ENVIRONMENT == "development"
+
+require 'resque/server'
+
+# Load Paths
 %w[helpers controllers jobs models].each do |dir|
   Dir[File.join(File.dirname(__FILE__), "app", dir, "**/*.rb")].each do |file|
     require File.expand_path(file)

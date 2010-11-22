@@ -1,4 +1,9 @@
 class ApplicationController < Sinatra::Base
+  configure(:development) do
+    register Sinatra::Reloader
+    also_reload File.join(Application::ROOT, "app/models/*.rb")
+  end
+  
   helpers UserHelpers
   helpers Sinatra::ContentFor
   

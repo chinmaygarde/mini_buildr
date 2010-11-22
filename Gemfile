@@ -25,6 +25,9 @@ gem "rake",     "0.8.7"
 # Authorization
 gem "omniauth", "0.1.6"
 
+# Process Monitoring
+gem "god"
+
 group :test do
 	# RSpec
 	gem "rspec",			"1.3.0"
@@ -40,4 +43,8 @@ group :test do
 	
 	# Metrics
 	gem "metric_fu",  "2.0.0"
+end
+
+group :development do
+  gem "sinatra-reloader", "0.5.0",  :require => "sinatra/reloader"
 end
