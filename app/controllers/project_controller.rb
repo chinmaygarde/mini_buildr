@@ -85,6 +85,22 @@ class ProjectController < ApplicationController
     redirect("/projects/show/#{project.id}")
   end
   
+  get '/:project_id/filesystem/browse/*' do |project_id, path|
+    @project = Project.find(project_id)
+    path = "" if path == "tree"
+    if path == ""
+      @back_path = nil
+    else
+      path_elements = path.split("/")
+      path_elements = path_elements.slice(0..(path_elements.count - 2))
+      path_elements = ["tree"] if path_elements.count == 1
+      @back_path = path_elements.join("/")
+    end
+    @path = path
+    @files = @project.list_files_in_dir(@path)
+    haml :filesystem
+  end
+  
   private
   def get_directories(params, task_type)
     dirs = []

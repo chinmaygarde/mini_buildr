@@ -1,4 +1,5 @@
 require 'yaml'
+require 'pathname'
 
 module Application
   ROOT = File.dirname(__FILE__)
@@ -17,7 +18,12 @@ Bundler.require(:development) if Application::ENVIRONMENT == "development"
 
 require 'resque/server'
 
-# Load Paths
+# Load lib directory
+Dir[File.join(File.dirname(__FILE__), "lib", "**/*.rb")].each do |file|
+  require File.expand_path(file)
+end
+
+# Load Paths under app directory
 %w[helpers controllers jobs models].each do |dir|
   Dir[File.join(File.dirname(__FILE__), "app", dir, "**/*.rb")].each do |file|
     require File.expand_path(file)

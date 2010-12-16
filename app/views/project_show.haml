@@ -1,5 +1,8 @@
 - content_for :left do
-	%a{:href => "/projects/#{@project.id}/tasks/new"} Create a new build task
+	%p
+		%a{:href => "/projects/#{@project.id}/filesystem/browse/tree"} Browse Filesystem
+	%p
+		%a{:href => "/projects/#{@project.id}/tasks/new"} Create a new build task
 	%h3 Tasks
 	#tasks
 		- if @project.tasks.count == 0
@@ -19,12 +22,11 @@
 							});
 
 - content_for :right do
-	%h3 Delete Project
 	%form{:action => "/projects/delete/#{@project.id}", :method => "post"}
 		%input{:type => "hidden", :name => "_method", :value => "delete"}
 		%input{:type => "submit", :value => "Delete Project"}
 	%form{:action => "/projects/touch/#{@project.id}", :method => "post"}
-		%input{:type => "submit", :value => "Check for Updates"}		
+		%input{:type => "submit", :value => "Check for Updates"}
 .project
 	%h3= @project.title
 	.links
