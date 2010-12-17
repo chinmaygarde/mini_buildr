@@ -10,4 +10,5 @@
 				%img{:src => "/images/#{@project.is_dir?(file) ? 'dir' : 'txt'}.png"}
 				%a{:href => "/projects/#{@project.id}/filesystem/browse/#{file}"}= file.to_s.gsub(@path + "/", "")
 - unless @content.nil?
-	#file_content= @content
+	#file_contents
+		.bespin= @content
