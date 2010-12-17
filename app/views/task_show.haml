@@ -1,3 +1,5 @@
+- content_for :title do
+	"#{@project.title.capitalize} | #{@task.task_type.title}"
 #task
 	%h3= "#{@task.task_type.title} for #{@project.title}"
 	- if @task.directories.count != 0

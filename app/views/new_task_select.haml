@@ -1,3 +1,5 @@
+- content_for :title do
+	"#{@project.title.capitalize} | Select Task Type"
 %h3= "Create a new build task for '#{@project.title}'"
 %form{:action => "/projects/#{@project.id}/tasks/options", :method => :post}
 	%p

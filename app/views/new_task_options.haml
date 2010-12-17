@@ -1,3 +1,5 @@
+- content_for :title do
+	"#{@project.title.capitalize} | Configure Task"
 %h3 Configure Task
 %form{:action => "/projects/#{@project.id}/tasks/create", :method => :post}
 	%input{:type => "hidden", :name => "task_type_id", :value => "#{@task_type.id}"}

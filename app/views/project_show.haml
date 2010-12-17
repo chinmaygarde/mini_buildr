@@ -1,3 +1,5 @@
+- content_for :title do
+	"#{@project.title.capitalize}"
 - content_for :left do
 	%p
 		%a{:href => "/projects/#{@project.id}/filesystem/browse/tree"} Browse Filesystem
