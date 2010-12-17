@@ -97,7 +97,13 @@ class ProjectController < ApplicationController
       @back_path = path_elements.join("/")
     end
     @path = path
-    @files = @project.list_files_in_dir(@path)
+    if @project.is_dir?(@path)
+      @files = @project.list_files_in_dir(@path)
+      @content = nil
+    else
+      @files = nil
+      @content = @project.get_file_contents(@path)
+    end
     haml :filesystem
   end
   

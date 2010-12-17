@@ -56,4 +56,7 @@ class Project
     File.ftype(File.join(repo_file_path, file)) == "directory"
   end
   
+  def get_file_contents(file_path)
+    File.read(File.join(repo_file_path, file_path))
+  end
 end

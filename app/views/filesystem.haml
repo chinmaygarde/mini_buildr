@@ -3,8 +3,11 @@
 	%a{:href => "/projects/#{@project.id}/filesystem/browse/tree"} Go to Root
 	- if @back_path != nil 
 		%a{:href => "/projects/#{@project.id}/filesystem/browse/#{@back_path}"} | Back
-#file_browser
-	- @files.each do |file|
-		%p
-			%img{:src => "/images/#{@project.is_dir?(file) ? 'dir' : 'txt'}.png"}
-			%a{:href => "/projects/#{@project.id}/filesystem/browse/#{file}"}= file.to_s.gsub(@path + "/", "")
+- unless @files.nil?
+	#file_browser
+		- @files.each do |file|
+			%p
+				%img{:src => "/images/#{@project.is_dir?(file) ? 'dir' : 'txt'}.png"}
+				%a{:href => "/projects/#{@project.id}/filesystem/browse/#{file}"}= file.to_s.gsub(@path + "/", "")
+- unless @content.nil?
+	#file_content= @content
