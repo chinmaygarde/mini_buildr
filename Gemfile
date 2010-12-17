@@ -28,6 +28,13 @@ gem "omniauth", "0.1.6"
 # Process Monitoring
 gem "god"
 
+# Syntax highlighting
+gem "rdiscount"
+
+gem "RedCloth"
+
+gem "github-markup", :require => "github/markup"
+
 group :test do
 	# RSpec
 	gem "rspec",			"1.3.0"

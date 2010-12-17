@@ -27,14 +27,13 @@
 		%input{:type => "submit", :value => "Delete Project"}
 	%form{:action => "/projects/touch/#{@project.id}", :method => "post"}
 		%input{:type => "submit", :value => "Check for Updates"}
-.project
-	%h3= @project.title
-	.links
-		%a{:href=>"/projects/update/#{@project.id}"} (Edit)
-		%a{:href=>"/projects"} (Back)
 #readme.profile
-	%h3= "About #{@project.title}"
 	#readme= @project.repo_readme
+.project
+	.links
+		%a{:href=>"/projects/update/#{@project.id}"} Edit | 
+		%a{:href=>"/projects"} Back
+
 #commits
 	%h3 Recent Commits
 	- if @project.repo == nil ||  @project.repo.commits.count == 0

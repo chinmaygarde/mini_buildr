@@ -26,7 +26,7 @@ class Project
     if File.exists?(repo_file_path)
       Dir.new(repo_file_path).entries.each do |file|
         if File.ftype(File.join(repo_file_path, file)) != "directory" && File.basename(File.join(repo_file_path, file)).match(/readme/i).to_s.downcase == "readme"
-          contents << File.read(File.expand_path(File.join(repo_file_path, file))).to_s.gsub(/\n/, "<br />")
+          contents << GitHub::Markup.render(file, File.read(File.expand_path(File.join(repo_file_path, file))))
         end
       end
     end
